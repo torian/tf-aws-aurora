@@ -16,8 +16,8 @@ resource "aws_rds_cluster_instance" "instances" {
   #preferred_backup_window      = var.preferred_backup_window
   #preferred_maintenance_window = var.preferred_maintenance_window
   
-  monitoring_role_arn = local.db_monitoring_role_arn
   monitoring_interval = var.db_monitoring_interval
+  monitoring_role_arn = local.db_monitoring_enabled ? local.db_monitoring_role_arn : null
 
   auto_minor_version_upgrade   = var.db_minor_version_upgrade
 

@@ -9,6 +9,7 @@ locals {
 
   db_subnet_group          = var.db_subnet_group_name != "" ? var.db_subnet_group_name : aws_db_subnet_group.cluster[0].id
   db_parameter_group       = null
+  db_monitoring_enabled    = var.db_monitoring_interval > 0 ? true : false
   db_monitoring_role_arn   = var.db_monitoring_role_arn != "" ? var.db_monitoring_role_arn : aws_iam_role.cluster.arn
 
   db_name    = var.db_name != "" ? var.db_name : null
