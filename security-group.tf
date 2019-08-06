@@ -3,7 +3,7 @@
 resource "aws_security_group" "cluster" {
   count = var.create_security_group ? 1 : 0
   
-  name        = var.cluster_identifier
+  name        = local.security_group_name
   description = var.cluster_identifier
 
   vpc_id      = var.vpc_id
@@ -24,6 +24,11 @@ resource "aws_security_group" "cluster" {
   #  
   #  }
   #}
+
+  tags = merge(
+    var.tags,
+    map("Name", local.security_group_name)
+  )
 }
 
 output "security-group" {
