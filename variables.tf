@@ -192,3 +192,33 @@ variable "cluster_iam_policies" {
   default     = [ "AmazonRDSEnhancedMonitoringRole" ]
 }
 
+variable "route53_zone_id" {
+  type        = string
+  description = "(optional - default: empty) Route53 zone id for cluster resource records"
+  default     = ""
+}
+
+variable "route53_create_record" {
+  type        = bool
+  description = "(optional - default: false) Create Route53 resource records"
+  default     = false
+}
+
+variable "route53_record_ttl" {
+  type        = number
+  description = "(optional - default: 3600) Route53 resource record time to live"
+  default     = 3600
+}
+
+variable "route53_record_cluster" {
+  type        = string
+  description = "(optional - default: empty) Route53 resource record for the cluster endpoint"
+  default     = ""
+}
+
+variable "route53_record_reader" {
+  type        = string
+  description = "(optional - default: empty) Route53 resource record for the cluster endpoint (reader)"
+  default     = ""
+}
+
