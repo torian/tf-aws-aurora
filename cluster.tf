@@ -27,3 +27,7 @@ resource "aws_rds_cluster" "cluster" {
   deletion_protection          = var.deletion_protection
 }
 
+output "cluster" {
+  value = aws_rds_cluster.cluster
+}
+
